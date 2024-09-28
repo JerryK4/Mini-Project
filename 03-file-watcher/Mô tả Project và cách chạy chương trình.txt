@@ -1,0 +1,21 @@
+Viết một chương trình bằng C trên Linux để theo dõi sự thay đổi của một file hoặc thư mục sử dụng thư viện inotify.
+
+Các bước chính:
+Thiết lập hệ thống inotify: Tạo một trình theo dõi (inotify watcher) sử dụng hệ thống inotify có sẵn trong Linux kernel để lắng nghe sự kiện thay đổi file, như tạo mới, sửa đổi, xóa hoặc đóng file.
+
+Xử lý sự kiện: Chương trình cần xử lý nhiều loại sự kiện khác nhau từ thư mục hoặc file cụ thể mà nó đang theo dõi (bao gồm thay đổi nội dung, thay đổi quyền truy cập, xóa file, tạo file mới, v.v).
+
+Tích hợp đa luồng (threading): Sử dụng pthread để quản lý nhiều sự kiện đồng thời từ các file khác nhau.
+
+Cấu trúc chương trình
+main.c:           Chương trình chính thực hiện việc theo dõi các thay đổi trong thư mục/file.
+event_handler.c:  Xử lý các sự kiện liên quan đến file (tạo, xóa, sửa) đồng thời tạo các luồng để ghi mô tả sự kiện xảy ra vào file log trong logger.c.
+logger.c:         Ghi lại log sự kiện vào một file.
+
+Cách chạy chương trình:
++Sử dụng Makefile để compile chương trình sử dụng shared lib.Sau đó chạy "./bin/use-shared-library".
++Mở một tab terminal khác để thao tác thêm,sửa,xóa file trong folder watched_dir.
+
+
+
+
