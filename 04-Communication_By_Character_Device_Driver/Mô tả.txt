@@ -1,0 +1,1 @@
+Chương trình thực hiện giao tiếp giữa kernelspace và userspace sử dụng character device driver với các thao tác đọc, ghi, thoát.
