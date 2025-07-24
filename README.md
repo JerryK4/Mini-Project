@@ -10,7 +10,7 @@ Tài liệu này hướng dẫn chi tiết cách xây dựng hệ điều hành 
 - [📁 1. Khởi Tạo Dự Án Yocto Với NXP BSP](#1-khởi-tạo-dự-án-yocto-với-nxp-bsp)  
 - [🔧 2. Cấu Hình Môi Trường Build](#-2-cấu-hình-môi-trường-build)  
 - [🧱 3. Thêm Layer OpenSC Tuỳ Chỉnh](#-3-thêm-layer-opensc-tuỳ-chỉnh)  
-- [⚙️ 4. Cấu Hình File Trong Thư Mục conf Nằm Trong bld-xwayland](#️-4-cấu-hình-file-localconf)  
+- [⚙️ 4. Cấu Hình File trong thư mục conf nằm trong bld-xwayland](#️-4-cấu-hình-file-localconf)  
 - [🔨 5. Thực Hiện Build Yocto](#-5-thực-hiện-build-yocto)  
 - [💾 6. Ghi Image Vào Thẻ SD Hoặc eMMC](#-6-ghi-image-vào-thẻ-sd-hoặc-emmc)  
 - [🧪 7. Kiểm Tra OpenSC Trên Bo Mạch](#-7-kiểm-tra-opensc-trên-bo-mạch)  
@@ -31,8 +31,23 @@ sudo apt install gawk wget git-core diffstat unzip texinfo gcc \
 ```
 
 ### Hệ thống khuyến nghị:
-- **Dung lượng ổ cứng**: Tối thiểu 100GB  
-- **Hệ điều hành**: Ubuntu 20.04 hoặc 22.04 (tránh 24.04 nếu gặp lỗi liên quan đến namespace)
+- **Dung lượng ổ cứng**: Tối thiểu 150GB  
+- **Hệ điều hành**: Ubuntu 20.04 hoặc 22.04 
+- **Ubuntu 24.04**: Nếu gặp lỗi
+```bash
+ERROR: User namespaces are not usable by BitBake, possibly due to AppArmor.
+```
+sửa như sau (Cho phép bitbake được dùng user namespaces, nếu không sẽ bị lỗi do cơ chế bảo mật của AppArmor chặn tính năng này.):
+```bash
+$ cat /etc/apparmor.d/bitbake
+abi <abi/4.0>,
+include <tunables/global>
+profile bitbake /**/bitbake/bin/bitbake flags=(unconfined) {
+        userns,
+}
+
+$ sudo apparmor_parser -r /etc/apparmor.d/bitbake
+```
 
 ---
 
@@ -314,4 +329,4 @@ pkcs11-tool --module /usr/lib/opensc-pkcs11.so -L
 
 - 🔧 Layer OpenSC: [bmctechvn/OpenSC](https://github.com/bmctechvn/OpenSC)  
 - 📦 BSP Yocto chính thức: [nxp-imx/imx-manifest](https://github.com/nxp-imx/imx-manifest)  
-- ✍️ Tài liệu: BMC Embedded Linux Team - BMC Technology and Services
+- ✍️ Tài liệu: [BMC Embedded Linux Team - BMC Technology and Services](https://bmctech.vn/)
