@@ -291,7 +291,7 @@ sudo dd if=imx-image-multimedia-imx8mmevk.rootfs-Z.wic of=/dev/sdX bs=1M conv=fs
 sync
 sudo eject /dev/sdX
 ```
-> Thay `imx-image-multimedia-imx8mmevk.rootfs-Z`bằng tên bản được build mới nhất.Dùng 'ls -l imx-image-multimedia-imx8mmevk.rootfs.wic.zst' để kiểm tra.<br>
+> Thay `imx-image-multimedia-imx8mmevk.rootfs-Z`bằng tên bản được build mới nhất.Dùng `ls -l imx-image-multimedia-imx8mmevk.rootfs.wic.zst` để kiểm tra.<br>
 > Thay `/dev/sdX` bằng đúng thiết bị thẻ SD (sử dụng lsblk khi cắm thẻ nhớ).
 
 ---
