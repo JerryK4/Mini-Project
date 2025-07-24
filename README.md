@@ -10,7 +10,7 @@ Tài liệu này hướng dẫn chi tiết cách xây dựng hệ điều hành 
 - [📁 1. Khởi Tạo Dự Án Yocto Với NXP BSP](#1-khởi-tạo-dự-án-yocto-với-nxp-bsp)  
 - [🔧 2. Cấu Hình Môi Trường Build](#-2-cấu-hình-môi-trường-build)  
 - [🧱 3. Thêm Layer OpenSC Tuỳ Chỉnh](#-3-thêm-layer-opensc-tuỳ-chỉnh)  
-- [⚙️ 4. Cấu Hình File trong thư mục conf nằm trong bld-xwayland](#️-4-cấu-hình-file-localconf)  
+- [⚙️ 4. Cấu Hình File trong thư mục conf nằm trong bld-xwayland](#️-4-cấu-hình-file-trong-thư-mục-conf-nằm-trong-bld-xwayland) 
 - [🔨 5. Thực Hiện Build Yocto](#-5-thực-hiện-build-yocto)  
 - [💾 6. Ghi Image Vào Thẻ SD Hoặc eMMC](#-6-ghi-image-vào-thẻ-sd-hoặc-emmc)  
 - [🧪 7. Kiểm Tra OpenSC Trên Bo Mạch](#-7-kiểm-tra-opensc-trên-bo-mạch)  
