@@ -142,9 +142,9 @@ reset
 
 📅 **Tài liệu tham khảo:**
 
-- [https://openwrt.org/toh/nxp/ls1012a](https://openwrt.org/toh/nxp/ls1012a)
-- [https://github.com/openwrt/openwrt](https://github.com/openwrt/openwrt)
-
+- [https://www.nxp.com/design/design-center/development-boards-and-designs/LS1012A-RDB](https://www.nxp.com/design/design-center/development-boards-and-designs/LS1012A-RDB)
+- [https://git.openwrt.org/openwrt/openwrt.git](https://git.openwrt.org/openwrt/openwrt.git)
+- [BMC Embedded Linux Team - BMC Technology and Services](https://bmctech.vn/)
 ---
 
 🚀 Đã sẵn sàng build và nạp.
