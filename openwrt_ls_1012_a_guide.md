@@ -1,19 +1,5 @@
 # 🧰 Hướng dẫn build và nạp firmware OpenWRT cho LS1012ARDB
 
-## 📋 Mục lục
-
-- [1. ✅ Yêu cầu chuẩn bị](#1-✅-yêu-cầu-chuẩn-bị)
-- [2. 🔧 Cài đặt đối với host Ubuntu (build OpenWRT)](#2-🔧-cài-đặt-đối-với-host-ubuntu-build-openwrt)
-- [3. 👁️ Tải source OpenWRT cho LS1012ARDB](#3-👁️-tải-source-openwrt-cho-ls1012ardb)
-- [4. 🔺 Cấu hình OpenWRT cho LS1012ARDB](#4-🔺-cấu-hình-openwrt-cho-ls1012ardb)
-- [5. ⚖️ Build OpenWRT](#5-⚖️-build-openwrt)
-- [6. 🔌 Chuẩn bị TFTP server](#6-🔌-chuẩn-bị-tftp-server)
-- [7. 🛋️ Kết nối và cài đặt IP cho host và board](#7-🛋️-kết-nối-và-cài-đặt-ip-cho-host-và-board)
-- [8. 🚀 Nạp firmware OpenWRT vào NOR flash qua TFTP](#8-🚀-nạp-firmware-openwrt-vào-nor-flash-qua-tftp)
-- [9. 📅 Kết quả mong đợi](#9-📅-kết-quả-mong-đợi)
-- [10. ⚠️ Lưu ý vấn đề](#10-⚠️-lưu-ý-vấn-đề)
-
-
 ## 1. ✅ Yêu cầu chuẩn bị
 
 | Hạng mục    | Mô tả                        |
