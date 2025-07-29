@@ -1,5 +1,19 @@
 # 🧰 Hướng dẫn build và nạp firmware OpenWRT cho LS1012ARDB
 
+## 📋 Mục lục
+
+- [1. ✅ Yêu cầu chuẩn bị](#1-✅-yêu-cầu-chuẩn-bị)
+- [2. 🔧 Cài đặt đối với host Ubuntu (build OpenWRT)](#2-🔧-cài-đặt-đối-với-host-ubuntu-build-openwrt)
+- [3. 👁️ Tải source OpenWRT cho LS1012ARDB](#3-👁️-tải-source-openwrt-cho-ls1012ardb)
+- [4. 🔺 Cấu hình OpenWRT cho LS1012ARDB](#4-🔺-cấu-hình-openwrt-cho-ls1012ardb)
+- [5. ⚖️ Build OpenWRT](#5-⚖️-build-openwrt)
+- [6. 🔌 Chuẩn bị TFTP server](#6-🔌-chuẩn-bị-tftp-server)
+- [7. 🛋️ Kết nối và cài đặt IP cho host và board](#7-🛋️-kết-nối-và-cài-đặt-ip-cho-host-và-board)
+- [8. 🚀 Nạp firmware OpenWRT vào NOR flash qua TFTP](#8-🚀-nạp-firmware-openwrt-vào-nor-flash-qua-tftp)
+- [9. 📅 Kết quả mong đợi](#9-📅-kết-quả-mong-đợi)
+- [10. ⚠️ Lưu ý vấn đề](#10-⚠️-lưu-ý-vấn-đề)
+
+
 ## 1. ✅ Yêu cầu chuẩn bị
 
 | Hạng mục    | Mô tả                        |
@@ -71,29 +85,29 @@ sudo systemctl restart tftpd-hpa
 1. Kết nối cổng **ETH\_1** trên board với cùng mạng với máy chủ TFTP bằng cáp Ethernet (hoặc dùng ETH\_2 nếu muốn).
 2. Dùng TeraTerm hoặc Minicom để mở kết nối UART.
 3. Khởi động board và dừng tại giao diện U-Boot bằng cách nhấn Enter.
-4. Cấu hình địa chỉ MAC (có thể lấy từ nhãn dán trên board):
+4. Cấu hình địa chỉ MAC (lấy từ nhãn dán trên board):
 
 ```bash
-setenv ethaddr 00:04:9f:04:fa:fb     # cho ETH_1
-setenv eth1addr 00:04:9f:04:fa:fc    # cho ETH_2 nếu cần
+setenv ethaddr xx:xx:xx:xx:xx:xx     # cho ETH_1
+setenv eth1addr xx:xx:xx:xx:xx:xx    # cho ETH_2 nếu cần
 ```
 
 5. Cấu hình địa chỉ IP cho máy chủ TFTP (host Ubuntu):
 
 ```bash
-setenv serverip 192.168.2.37
+setenv serverip 'IP máy chủ'
 ```
 
 6. Cấu hình IP cho board (nên cùng lớp mạng với host):
 
 ```bash
-setenv ipaddr 192.168.2.38
+setenv ipaddr 'IP board'
 ```
 
 7. Chọn cổng Ethernet đang sử dụng để truyền dữ liệu:
 
 ```bash
-setenv ethact pfe_eth0    # hoặc pfe_eth2 nếu dùng ETH_2
+setenv ethact pfe_eth0    # hoặc pfe_ethx nếu dùng ETH_x - x là số
 saveenv
 ```
 
@@ -131,14 +145,6 @@ reset
 - Sử dụng lệnh `ip a` để xem IP
 - Đảm bảo firmware đã boot thành công
 
-## 10. ⚠️ Lưu ý vấn đề
-
-| Lỗi          | Nguyên nhân                  | Khắc phục                                  |
-| ------------ | ---------------------------- | ------------------------------------------ |
-| TFTP timeout | IP sai, dây mạng             | Kiểm tra `ipaddr`, `serverip`, ping        |
-| Boot fail    | Flash sai hoặc không tự boot | Dùng lệnh `sf read` + `bootm` hoặc `booti` |
-
----
 
 📅 **Tài liệu tham khảo:**
 
