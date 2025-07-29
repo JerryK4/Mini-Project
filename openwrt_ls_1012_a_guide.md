@@ -66,17 +66,41 @@ sudo systemctl restart tftpd-hpa
 
 ## 7. 🛋️ Kết nối và cài đặt IP cho host và board
 
-**Host (Ubuntu):**
+Để cấu hình bo mạch sử dụng TFTP, thực hiện các bước sau:
 
-- IP: `192.168.2.37`
+1. Kết nối cổng **ETH\_1** trên board với cùng mạng với máy chủ TFTP bằng cáp Ethernet (hoặc dùng ETH\_2 nếu muốn).
+2. Dùng TeraTerm hoặc Minicom để mở kết nối UART.
+3. Khởi động board và dừng tại giao diện U-Boot bằng cách nhấn Enter.
+4. Cấu hình địa chỉ MAC (có thể lấy từ nhãn dán trên board):
 
-**Board (trong U-Boot):**
+```bash
+setenv ethaddr 00:04:9f:04:fa:fb     # cho ETH_1
+setenv eth1addr 00:04:9f:04:fa:fc    # cho ETH_2 nếu cần
+```
+
+5. Cấu hình địa chỉ IP cho máy chủ TFTP (host Ubuntu):
+
+```bash
+setenv serverip 192.168.2.37
+```
+
+6. Cấu hình IP cho board (nên cùng lớp mạng với host):
 
 ```bash
 setenv ipaddr 192.168.2.38
-setenv serverip 192.168.2.37
-setenv ethact pfe_eth0  # Hoặc pfe_eth2
+```
+
+7. Chọn cổng Ethernet đang sử dụng để truyền dữ liệu:
+
+```bash
+setenv ethact pfe_eth0    # hoặc pfe_eth2 nếu dùng ETH_2
 saveenv
+```
+
+8. Kiểm tra kết nối mạng từ board đến host:
+
+```bash
+ping $serverip
 ```
 
 ## 8. 🚀 Nạp firmware OpenWRT vào NOR flash qua TFTP
